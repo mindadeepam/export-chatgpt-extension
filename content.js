@@ -1,0 +1,1 @@
+// This file can be empty for now, but it's required for the content script to be injected
