@@ -14,7 +14,7 @@ Also, was bored and wanted to make a chrome extension so here you go!
 
 ## Usage
 
-1. Go to [https://chat.openai.com/](https://chat.openai.com/).
+1. Go to [https://chat.openai.com/](https://chat.openai.com/). And open the chat you want to export.
 2. Click the extension icon in your browser toolbar.
 3. (Optional) Enter a custom file name in the input field.
 4. Click "Extract Messages" in the popup.
