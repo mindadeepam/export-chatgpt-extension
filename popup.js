@@ -5,12 +5,14 @@ document.addEventListener('DOMContentLoaded', function() {
 function handleExtraction() {
   const fileNameInput = document.getElementById('fileName');
   const fileName = fileNameInput.value.trim() || getDefaultFileName();
+  const contentType = document.getElementById('contentType').value;
 
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
     chrome.scripting.executeScript(
       {
         target: { tabId: tabs[0].id },
-        function: extractMessages
+        function: extractMessages,
+        args: [contentType]
       },
       (results) => {
         const output = document.getElementById('output');
@@ -26,13 +28,13 @@ function handleExtraction() {
   });
 }
 
-function extractMessages() {
+function extractMessages(contentType) {
   const messages = [];
   const messageDivs = document.querySelectorAll('div[data-message-author-role]');
 
   messageDivs.forEach(div => {
     const role = div.getAttribute('data-message-author-role');
-    const content = div.textContent.trim();
+    const content = contentType === 'html' ? div.innerHTML : div.innerText;
     if (role === 'user' || role === 'assistant') {
       messages.push({ type: role, content: content });
     }

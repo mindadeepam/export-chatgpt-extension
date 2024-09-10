@@ -47,6 +47,10 @@
 <body>
   <h1>ChatGPT Data Extractor</h1>
   <input type="text" id="fileName" placeholder="Enter file name (optional)">
+  <select id="contentType">
+    <option value="html">HTML</option>
+    <option value="text">Text</option>
+  </select>
   <button id="extract">Extract Messages</button>
   <pre id="output"></pre>
   <script src="popup.js"></script>
